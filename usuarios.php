@@ -15,7 +15,7 @@ $result = $query->fetchAll();
         <div clas="col.lg-12 text-center">
             <h3>Listado Usuarios</h3>
             <br>
-            <input type="submit" class="btn btn-primary" value="Agregar">
+            <a href="" class="btn btn-outline-primary" title="Agregar Usuario"><i class="fa fa-user-plus"></i></a>
             <br><br>
             <div class="table-responsive-sm">
                 <table class="table">
@@ -45,11 +45,11 @@ $result = $query->fetchAll();
                                         echo "<span class='badge badge-danger'>Inactivo</span>";
                                     } ?></td>
                             <td>
-                                <a href="" class="btn btn-primary btn-sm" title="Modificar"><i
-                                        class="fa fa-pen-square"></i>Modificar</a>
+                                <a href="" class="btn btn-outline-primary btn-sm" title="Modificar">
+                                    <i class="fa fa-pen-square"></i></a>
                                 <a href="controlador/eliminar.php?codid=<?php echo $value['cod']; ?>"
-                                    class="btn btn-danger btn-sm" title="Eliminar"> <i
-                                        class="fa fa-trash-alt"></i>Eliminar</a>
+                                    class="btn btn-outline-danger btn-sm" title="Eliminar">
+                                    <i class="fa fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         <?php
