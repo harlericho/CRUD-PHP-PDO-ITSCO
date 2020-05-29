@@ -32,36 +32,37 @@ $result = $query->fetchAll();
                     <tbody>
                         <?php
                         foreach ($result as $key => $value) {
-                        ?>
-                            <tr>
-                                <th scope="row"><?php echo $value['cod']; ?></th>
-                                <td><?php echo $value['nombre']; ?></td>
-                                <td><?php echo $value['usuario']; ?></td>
-                                <td><?php echo $value['descripcion']; ?></td>
-                                <td><?php
+                            ?>
+                        <tr>
+                            <th scope="row"><?php echo $value['cod']; ?></th>
+                            <td><?php echo $value['nombre']; ?></td>
+                            <td><?php echo $value['usuario']; ?></td>
+                            <td><?php echo $value['descripcion']; ?></td>
+                            <td><?php
                                     if ($value['estado'] == 'A') {
                                         echo "<span class='badge badge-success'>Activo</span>";
                                     } else {
                                         echo "<span class='badge badge-danger'>Inactivo</span>";
                                     } ?></td>
-                                <td>
-                                    <a href="" class="btn btn-primary btn-sm">Modificar</a>
-                                    <a href="controlador/eliminar.php?codid=<?php echo $value['cod']; ?>" class="btn btn-danger btn-sm">Eliminar</a>
-                                </td>
-                            </tr>
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm">Modificar</a>
+                                <a href="controlador/eliminar.php?codid=<?php echo $value['cod']; ?>"
+                                    class="btn btn-danger btn-sm">Eliminar</a>
+                            </td>
+                        </tr>
                         <?php
                         } ?>
                     </tbody>
                 </table>
                 <?php
                 if (isset($_SESSION['mensaje'])) {
-                ?>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Mensaje:</strong> <?php echo $_SESSION['mensaje']; ?>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                    ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Mensaje:</strong> <?php echo $_SESSION['mensaje']; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <?php
                     unset($_SESSION['mensaje']);
                 } else {
