@@ -4,7 +4,8 @@ include "templeate/templeate.php";
 ?>
 
 <?php
-$sql = "SELECT u.cod, u.nombre,u.usuario,r.descripcion,u.estado FROM usuarios u INNER JOIN rol r ON u.cod=r.cod";
+$sql = "SELECT u.cod, u.nombre,u.usuario,r.descripcion,u.estado
+FROM usuarios u INNER JOIN rol r ON u.idrol=r.cod";
 $query = $pdo->prepare($sql);
 $query->execute();
 $result = $query->fetchAll();
@@ -15,7 +16,8 @@ $result = $query->fetchAll();
         <div clas="col.lg-12 text-center">
             <h3>Listado Usuarios</h3>
             <br>
-            <a href="" class="btn btn-outline-primary" title="Agregar Usuario"><i class="fa fa-user-plus"></i></a>
+            <a href="addUsuarios.php" class="btn btn-outline-primary" title="Agregar Usuario"><i
+                    class="fa fa-user-plus"></i> Agregar</a>
             <br><br>
             <div class="table-responsive-sm">
                 <table class="table">
@@ -47,7 +49,7 @@ $result = $query->fetchAll();
                             <td>
                                 <a href="" class="btn btn-outline-primary btn-sm" title="Modificar">
                                     <i class="fa fa-pen-square"></i></a>
-                                <a href="controlador/eliminar.php?codid=<?php echo $value['cod']; ?>"
+                                <a href="controlador/crudUsuarios.php?codid=<?php echo $value['cod']; ?>"
                                     class="btn btn-outline-danger btn-sm" title="Eliminar">
                                     <i class="fa fa-trash-alt"></i></a>
                             </td>
