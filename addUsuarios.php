@@ -41,8 +41,8 @@ include "templeate/templeate.php";
                         <label for="validationCustom04">Rol</label>
                         <select class="custom-select" id="validationCustom04" name="seleccionRol" required>
                             <option selected disabled value="">-Seleccione-</option>
-                            <option value="A">Administrador</option>
-                            <option value="I">Invitado</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Invitado</option>
                         </select>
                         <div class="invalid-feedback">
                             Seleccione un Rol.
