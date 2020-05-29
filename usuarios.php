@@ -45,9 +45,11 @@ $result = $query->fetchAll();
                                         echo "<span class='badge badge-danger'>Inactivo</span>";
                                     } ?></td>
                             <td>
-                                <a href="" class="btn btn-primary btn-sm">Modificar</a>
+                                <a href="" class="btn btn-primary btn-sm" title="Modificar"><i
+                                        class="fa fa-pen-square"></i>Modificar</a>
                                 <a href="controlador/eliminar.php?codid=<?php echo $value['cod']; ?>"
-                                    class="btn btn-danger btn-sm">Eliminar</a>
+                                    class="btn btn-danger btn-sm" title="Eliminar"> <i
+                                        class="fa fa-trash-alt"></i>Eliminar</a>
                             </td>
                         </tr>
                         <?php
