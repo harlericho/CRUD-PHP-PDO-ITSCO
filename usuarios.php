@@ -4,7 +4,7 @@ include "templeate/templeate.php";
 ?>
 
 <?php
-$sql = "SELECT u.cod, u.nombre,u.usuario,r.descripcion,u.estado
+$sql = "SELECT u.cod, u.nombre,u.usuario,u.password,r.descripcion,u.estado
 FROM usuarios u INNER JOIN rol r ON u.idrol=r.cod";
 $query = $pdo->prepare($sql);
 $query->execute();
@@ -47,12 +47,13 @@ $result = $query->fetchAll();
                                         echo "<span class='badge badge-danger'>Inactivo</span>";
                                     } ?></td>
                             <td>
-                                <a href="" class="btn btn-outline-primary btn-sm" title="Modificar">
+                                <a href="#edit_<?php echo $value['cod']; ?>" class="btn btn-outline-primary btn-sm" title="Modificar" data-toggle="modal">
                                     <i class="fa fa-pen-square"></i></a>
                                 <a href="controlador/crudUsuarios.php?codid=<?php echo $value['cod']; ?>"
                                     class="btn btn-outline-danger btn-sm" title="Eliminar">
                                     <i class="fa fa-trash-alt"></i></a>
                             </td>
+                            <?php include('modalUsuarios.php'); ?>
                         </tr>
                         <?php
                         } ?>
