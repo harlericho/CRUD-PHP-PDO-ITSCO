@@ -10,6 +10,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 </head>
 
 <body>
@@ -52,36 +53,20 @@ session_start();
                 </div>
             </div>
             <?php
-            if (isset($_SESSION['alerta']) || isset($_SESSION['alerta1']) || isset($_SESSION['alerta2'])) {
+            if (isset($_SESSION['alerta'])) {
             ?>
-            <?php
-                if (isset($_SESSION['alerta'])) {
-                ?>
-            <div class="alert alert-warning alert-dismissable">
+            <div class="alert alert-<?php echo $_SESSION['color']; ?> alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <strong>Alerta!</strong> <?php echo  $_SESSION['alerta']; ?>
+                <strong><i class="icon fa fa-<?= $_SESSION['logo']; ?> "></i> Alerta!: </strong> <?php echo  $_SESSION['alerta']; ?>
             </div>
-            <?php } elseif (isset($_SESSION['alerta1'])) {
-                ?>
-            <div class="alert alert-info alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <strong>Alerta!</strong> <?php echo  $_SESSION['alerta1']; ?>
-            </div>
-            <?php } elseif (isset($_SESSION['alerta2'])) {
-                ?>
-            <div class="alert alert-danger alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <strong>Alerta!</strong> <?php echo  $_SESSION['alerta2']; ?>
-            </div>
-            <?php } ?>
             <?php
                 unset($_SESSION['alerta']);
-                unset($_SESSION['alerta1']);
-                unset($_SESSION['alerta2']);
+                unset($_SESSION['color']);
+                unset($_SESSION['logo']);
             } else {
                 unset($_SESSION['alerta']);
-                unset($_SESSION['alerta1']);
-                unset($_SESSION['alerta2']);
+                unset($_SESSION['color']);
+                unset($_SESSION['logo']);
             } ?>
         </div>
     </div>

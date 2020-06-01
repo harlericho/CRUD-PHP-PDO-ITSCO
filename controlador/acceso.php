@@ -18,14 +18,14 @@ if (validarUsuario($user, $pdo) == true) {
                 echo "<script>
                 alert('Bienvenido Administrador');window.location= '../inicio.php'
                 </script>";
-                $_SESSION['usuario']=$user;
+                $_SESSION['usuario'] = $user;
                 limpiarSession();
                 break;
             case 2:
                 echo "<script>
                 alert('Bienvenido Invitado');window.location= '../inicio.php'
                 </script>";
-                $_SESSION['usuario']=$user;
+                $_SESSION['usuario'] = $user;
                 limpiarSession();
                 break;
         }
@@ -41,28 +41,36 @@ if (validarUsuario($user, $pdo) == true) {
                     $querysql1 = $pdo->prepare($sql1);
                     $querysql1->execute();
 
-                    $_SESSION['alerta2'] = 'Lo sentimos, su usuario ha sido desactivado';
+                    $_SESSION['alerta'] = 'Lo sentimos, su usuario ha sido desactivado';
+                    $_SESSION['color'] = 'danger';
+                    $_SESSION['logo'] = 'exclamation-circle';
                     header("location: ../index.php");
                     //$mensaje2 = 'Lo sentimos, su usuario ha sido desactivado';
                     //echo "<script type='text/javascript'>alert('$mensaje2');</script>";
                     //header('refresh:0.2;url=../index.php');
                     limpiarSession();
                 } else {
-                    $_SESSION['alerta2'] = $int + 'intentos';
+                    $_SESSION['alerta'] = $int.' intentos';
+                    $_SESSION['color'] = 'danger';
+                    $_SESSION['logo'] = 'lock';
                     header("location: ../index.php");
                     //echo "<script type='text/javascript'>alert('$int intento');window.location= '../index.php'</script>";
                 }
             } else {
                 $_SESSION['n'] = 1;
                 $_SESSION['user'] = $user;
-                $_SESSION['alerta2'] = '1 intento';
+                $_SESSION['alerta'] = '1 intento';
+                $_SESSION['color'] = 'danger';
+                $_SESSION['logo'] = 'lock';
                 header("location: ../index.php");
                 //echo "<script type='text/javascript'>alert('1 intento');window.location= '../index.php'</script>";
             }
         } else {
             $_SESSION['n'] = 1;
             $_SESSION['user'] = $user;
-            $_SESSION['alerta2'] = '1 intento';
+            $_SESSION['alerta'] = '1 intento';
+            $_SESSION['color'] = 'danger';
+            $_SESSION['logo'] = 'lock';
             header("location: ../index.php");
             //echo "<script type='text/javascript'>alert('1 intento');window.location= '../index.php'</script>";
         }
@@ -71,10 +79,14 @@ if (validarUsuario($user, $pdo) == true) {
     //echo "<script>
     //alert('El estado del usuario esta inactivo');
     //</script>";
-    $_SESSION['alerta1'] = 'El estado del usuario esta inactivo';
+    $_SESSION['alerta'] = 'El estado del usuario esta inactivo';
+    $_SESSION['color'] = 'info';
+    $_SESSION['logo'] = 'user-times';
     header("location: ../index.php");
 } else {
-    $_SESSION['alerta'] = 'Usuario no existe';
+    $_SESSION['alerta'] = 'Usuario no existe en la base';
+    $_SESSION['color'] = 'warning';
+    $_SESSION['logo'] = 'user';
     header("location: ../index.php");
     // echo "<script type='text/javascript'>alert('Email no existe');window.location= '../index.php'</script>";
 }

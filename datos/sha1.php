@@ -1,7 +1,7 @@
 <?php
 define('METHOD', 'AES-256-CBC');
-define('SECRET_KEY', '$CARLOS@2016');
-define('SECRET_IV', '101712');
+define('SECRET_KEY', '$harlericho@2020');
+define('SECRET_IV', '909090');
 class SED
 {
     public static function encryption($string)
