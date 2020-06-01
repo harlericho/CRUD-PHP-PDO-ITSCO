@@ -4,8 +4,8 @@ include "templeate/templeate.php";
 ?>
 
 <?php
-$sql = "SELECT u.cod, u.nombre,u.usuario,u.password,r.descripcion,u.estado
-FROM usuarios u INNER JOIN rol r ON u.idrol=r.cod";
+$sql = "SELECT u.cod, u.nombre,u.usuario,u.password,u.idrol,r.descripcion,u.estado
+FROM usuarios u INNER JOIN rol r ON u.idrol=r.cod where u.estado='A'";
 $query = $pdo->prepare($sql);
 $query->execute();
 $result = $query->fetchAll();
@@ -16,8 +16,10 @@ $result = $query->fetchAll();
         <div clas="col.lg-12 text-center">
             <h3>Listado Usuarios</h3>
             <br>
-            <a href="addUsuarios.php" class="btn btn-outline-primary" title="Agregar Usuario"><i
-                    class="fa fa-user-plus"></i> Agregar</a>
+            <a href="#" data-toggle="modal" data-target="#modalAdd" class="btn btn-outline-primary"
+                title="Agregar Usuario"><i class="fa fa-user-plus"></i> Agregar
+            </a>
+            <?php include('addUsuarios.php'); ?>
             <br><br>
             <div class="table-responsive-sm">
                 <table class="table">
@@ -47,13 +49,14 @@ $result = $query->fetchAll();
                                         echo "<span class='badge badge-danger'>Inactivo</span>";
                                     } ?></td>
                             <td>
-                                <a href="#edit_<?php echo $value['cod']; ?>" class="btn btn-outline-primary btn-sm" title="Modificar" data-toggle="modal">
+                                <a href="#modalEdit_<?php echo $value['cod']; ?>" class="btn btn-outline-primary btn-sm"
+                                    data-toggle="modal" title="Modificar">
                                     <i class="fa fa-pen-square"></i></a>
                                 <a href="controlador/crudUsuarios.php?codid=<?php echo $value['cod']; ?>"
                                     class="btn btn-outline-danger btn-sm" title="Eliminar">
                                     <i class="fa fa-trash-alt"></i></a>
                             </td>
-                            <?php include('modalUsuarios.php'); ?>
+                            <?php include('editUsuarios.php'); ?>
                         </tr>
                         <?php
                         } ?>
@@ -62,7 +65,7 @@ $result = $query->fetchAll();
                 <?php
                 if (isset($_SESSION['mensaje'])) {
                     ?>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div class="alert alert-<?php echo $_SESSION['color']; ?> alert-dismissible fade show" role="alert">
                     <strong>Mensaje:</strong> <?php echo $_SESSION['mensaje']; ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -70,8 +73,10 @@ $result = $query->fetchAll();
                 </div>
                 <?php
                     unset($_SESSION['mensaje']);
+                    unset($_SESSION['color']);
                 } else {
                     unset($_SESSION['mensaje']);
+                    unset($_SESSION['color']);
                 } ?>
             </div>
         </div>

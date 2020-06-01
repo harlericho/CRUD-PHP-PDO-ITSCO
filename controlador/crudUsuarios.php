@@ -8,6 +8,7 @@ if ($_GET) {
     $query->execute();
     if ($query) {
         $_SESSION['mensaje'] = 'Dato eliminado o inactivo';
+        $_SESSION['color'] = 'danger';
         header("location:../usuarios.php");
         // echo "<script>
         // alert('Registro eliminado o inactivo');window.location= '../usuarios.php'
@@ -27,5 +28,24 @@ if (isset($_POST['btnGuardar']) != null) {
     $query = $pdo->prepare($sql);
     $query->execute($datos);
     $_SESSION['mensaje'] = 'Usuario agregado';
+    $_SESSION['color'] = 'success';
+    header("location:../usuarios.php");
+}
+
+
+if (isset($_POST['btnModificar']) != null) {
+    $datos = array(
+        'codigo' => $_POST['idcode'],
+        'nombre' => $_POST['txtNombree'],
+        'usuario' => $_POST['txtUsuarioe'],
+        'pass' => $_POST['txtPassworde'],
+        'rol' => $_POST['seleccionRole'],
+        'estado' => $_POST['seleccionEstadoe'],
+    );
+    $sql = "UPDATE usuarios SET nombre=:nombre,usuario=:usuario,password=:pass,idrol=:rol,estado=:estado where cod=:codigo";
+    $query = $pdo->prepare($sql);
+    $query->execute($datos);
+    $_SESSION['mensaje'] = 'Usuario modificado';
+    $_SESSION['color'] = 'info';
     header("location:../usuarios.php");
 }
