@@ -45,11 +45,18 @@ session_start();
                             <!-- Button -->
 
                             <div class="col-sm-12 controls">
-                                <button class="btn btn-success" type="submit">Ingreso</button>
+                                <button class="btn btn-success" type="submit">
+                                    <i class="glyphicon glyphicon-open"></i>
+                                    Ingreso</button>
                                 <!-- <a id="btn-fblogin" href="#" class="btn btn-primary">Registro</a> -->
                             </div>
                         </div>
                     </form>
+                    <!-- Copyright -->
+                    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                        <a href="https://twitter.com/CarlChokSanc"> CarlChoSanc</a>
+                    </div>
+                    <!-- Copyright -->
                 </div>
             </div>
             <?php
@@ -57,7 +64,8 @@ session_start();
             ?>
             <div class="alert alert-<?php echo $_SESSION['color']; ?> alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <strong><i class="icon fa fa-<?= $_SESSION['logo']; ?> "></i> Alerta!: </strong> <?php echo  $_SESSION['alerta']; ?>
+                <strong><i class="icon fa fa-<?= $_SESSION['logo']; ?> "></i> Alerta!: </strong>
+                <?php echo  $_SESSION['alerta']; ?>
             </div>
             <?php
                 unset($_SESSION['alerta']);
