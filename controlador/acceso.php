@@ -1,10 +1,11 @@
 <?php
 require '../datos/conexion.php';
+require '../datos/EncryDesencry.php';
 session_start();
 $user = $_POST['email'];
 $pass = $_POST['password'];
-$passmd5 = md5($pass);
-$sql = "select * from usuarios where usuario='$user' and password='$passmd5'";
+$passHash = $encriptar($pass);
+$sql = "select * from usuarios where usuario='$user' and password='$passHash'";
 $query = $pdo->prepare($sql);
 $query->execute();
 $result = $query->fetchAll();

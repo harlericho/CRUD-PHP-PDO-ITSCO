@@ -1,7 +1,8 @@
 <?php
 session_start();
 include "datos/conexion.php";
-include "datos/sha1.php";
+//include "datos/sha1.php";
+include "datos/EncryDesencry.php";
 ?>
 <!doctype html>
 <html lang="en">

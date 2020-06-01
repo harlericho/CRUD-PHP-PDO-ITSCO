@@ -34,7 +34,8 @@
                         <div class="col-md-12 mb-3">
                             <label for="validationCustom03">Contraseña:</label>
                             <input type="password" class="form-control" name="txtPassworde" id="validationCustom03"
-                                value="<?php echo SED::decryption($value['password']); ?>" placeholder="Contraseña" required>
+                                value="<?php echo $desencriptar($value['password']); ?>" placeholder="Contraseña"
+                                required>
                             <div class="invalid-feedback">
                                 Ingrese una Contraseña.
                             </div>
@@ -46,13 +47,13 @@
                             <select class="custom-select" id="validationCustom04"
                                 value="<?php echo $value['descripcion']; ?>" name="seleccionRole" required>
                                 <!-- <option selected disabled value="">-Seleccione-</option> -->
-                                <?php if ($value['idrol'] ==="1") {
-                                    ?>
+                                <?php if ($value['idrol'] === "1") {
+                                ?>
                                 <option value="1"><?php echo $value['descripcion']; ?></option>
                                 <option value="2">Invitado</option>
                                 <?php
-                                    } else{
-                                    ?>
+                                } else {
+                                ?>
                                 <option value="2"><?php echo $value['descripcion']; ?></option>
                                 <option value="1">Administrador</option>
                                 <?php } ?>
@@ -65,13 +66,13 @@
                             <label for="validationCustom04">Estado</label>
                             <select class="custom-select" id="validationCustom04" name="seleccionEstadoe" required>
                                 <!-- <option selected disabled value="">-Seleccione-</option> -->
-                                <?php if ($value['estado'] ==="A") {
-                                    ?>
+                                <?php if ($value['estado'] === "A") {
+                                ?>
                                 <option value="A">Activo</option>
                                 <option value="I">Inactivo</option>
                                 <?php
-                                    } else{
-                                    ?>
+                                } else {
+                                ?>
                                 <option value="I">Inactivo</option>
                                 <option value="A">Activo</option>
                                 <?php } ?>

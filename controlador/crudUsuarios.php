@@ -1,7 +1,8 @@
 <?php
 session_start();
 include "../datos/conexion.php";
-include "../datos/sha1.php";
+//include "../datos/sha1.php";
+include "../datos/EncryDesencry.php";
 if ($_GET) {
     $id = $_GET['codid'];
     $sql = "UPDATE usuarios set estado='I' where cod='$id'";
@@ -22,7 +23,7 @@ if (isset($_POST['btnGuardar']) != null) {
     $datos = array(
         'nombre' => $_POST['txtNombre'],
         'usuario' => $_POST['txtUsuario'],
-        'pass' => SED::encryption($_POST['txtPassword']),
+        'pass' => $encriptar($_POST['txtPassword']),
         'rol' => $_POST['seleccionRol'],
         'estado' => $_POST['seleccionEstado'],
     );
@@ -41,7 +42,7 @@ if (isset($_POST['btnModificar']) != null) {
         'codigo' => $_POST['idcode'],
         'nombre' => $_POST['txtNombree'],
         'usuario' => $_POST['txtUsuarioe'],
-        'pass' => SED::encryption($_POST['txtPassworde']),
+        'pass' => $encriptar($_POST['txtPassworde']),
         'rol' => $_POST['seleccionRole'],
         'estado' => $_POST['seleccionEstadoe'],
     );
@@ -53,5 +54,3 @@ if (isset($_POST['btnModificar']) != null) {
     $_SESSION['logo'] = 'edit'; //logo
     header("location:../usuarios.php");
 }
-
-
