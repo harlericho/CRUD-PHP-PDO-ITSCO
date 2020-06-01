@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../datos/conexion.php";
+include "../datos/sha1.php";
 if ($_GET) {
     $id = $_GET['codid'];
     $sql = "UPDATE usuarios set estado='I' where cod='$id'";
@@ -9,6 +10,7 @@ if ($_GET) {
     if ($query) {
         $_SESSION['mensaje'] = 'Dato eliminado o inactivo';
         $_SESSION['color'] = 'danger';
+        $_SESSION['logo'] = 'trash'; //logo
         header("location:../usuarios.php");
         // echo "<script>
         // alert('Registro eliminado o inactivo');window.location= '../usuarios.php'
@@ -20,7 +22,7 @@ if (isset($_POST['btnGuardar']) != null) {
     $datos = array(
         'nombre' => $_POST['txtNombre'],
         'usuario' => $_POST['txtUsuario'],
-        'pass' => md5($_POST['txtPassword']),
+        'pass' => SED::encryption($_POST['txtPassword']),
         'rol' => $_POST['seleccionRol'],
         'estado' => $_POST['seleccionEstado'],
     );
@@ -29,6 +31,7 @@ if (isset($_POST['btnGuardar']) != null) {
     $query->execute($datos);
     $_SESSION['mensaje'] = 'Usuario agregado';
     $_SESSION['color'] = 'success';
+    $_SESSION['logo'] = 'save'; //logo
     header("location:../usuarios.php");
 }
 
@@ -38,7 +41,7 @@ if (isset($_POST['btnModificar']) != null) {
         'codigo' => $_POST['idcode'],
         'nombre' => $_POST['txtNombree'],
         'usuario' => $_POST['txtUsuarioe'],
-        'pass' => $_POST['txtPassworde'],
+        'pass' => SED::encryption($_POST['txtPassworde']),
         'rol' => $_POST['seleccionRole'],
         'estado' => $_POST['seleccionEstadoe'],
     );
@@ -47,5 +50,8 @@ if (isset($_POST['btnModificar']) != null) {
     $query->execute($datos);
     $_SESSION['mensaje'] = 'Usuario modificado';
     $_SESSION['color'] = 'info';
+    $_SESSION['logo'] = 'edit'; //logo
     header("location:../usuarios.php");
 }
+
+

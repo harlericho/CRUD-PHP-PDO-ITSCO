@@ -34,7 +34,7 @@
                         <div class="col-md-12 mb-3">
                             <label for="validationCustom03">Contraseña:</label>
                             <input type="password" class="form-control" name="txtPassworde" id="validationCustom03"
-                                value="<?php echo $value['password']; ?>" placeholder="Contraseña" required>
+                                value="<?php echo SED::decryption($value['password']); ?>" placeholder="Contraseña" required>
                             <div class="invalid-feedback">
                                 Ingrese una Contraseña.
                             </div>
