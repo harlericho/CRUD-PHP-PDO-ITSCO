@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="validationCustom02">Usuario:</label>
                             <input type="email" class="form-control" name="txtUsuarioe" id="validationCustom02"
                                 value="<?php echo $value['usuario']; ?>" placeholder="Email" required>
@@ -31,7 +31,7 @@
                                 Ingrese un Email.
                             </div>
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="validationCustom03">Contraseña:</label>
                             <input type="password" class="form-control" name="txtPassworde" id="validationCustom03"
                                 value="<?php echo $desencriptar($value['password']); ?>" placeholder="Contraseña"
