@@ -55,8 +55,8 @@ if ($perfil == 1) {
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><?php echo $nombre; ?></button>
-        <a class="btn btn-outline-danger my-2 my-sm-0" href="controlador/cerrarSession.php">Salir</a>
+        <button class="btn btn-success my-2 my-sm-0" title="Usuario" type="submit"><?php echo $nombre; ?></button>
+        <a class="btn btn-danger my-2 my-sm-0" title="Cerrar Sessión"href="controlador/cerrarSession.php">Salir</a>
       </form>
     </div>
   </nav>
@@ -91,8 +91,8 @@ if ($perfil == 1) {
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><?php echo $nombre; ?></button>
-        <a class="btn btn-outline-danger my-2 my-sm-0" href="controlador/cerrarSession.php">Salir</a>
+        <button class="btn btn-success my-2 my-sm-0"  title="Usuario"  type="submit"><?php echo $nombre; ?></button>
+        <a class="btn btn-danger my-2 my-sm-0"  title="Usuario"  href="controlador/cerrarSession.php">Salir</a>
       </form>
     </div>
   </nav>
