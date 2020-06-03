@@ -1,5 +1,5 @@
 <?php
-
+//USANDO UN HASH DE PASSWORD
 $clave  = 'carlchoksanc8686*@';
 //Metodo de encriptación
 $method = 'aes-256-cbc';
