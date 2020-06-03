@@ -1,5 +1,4 @@
-<div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,8 +12,7 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationCustom01">Apellidos y Nombres:</label>
-                            <input type="text" class="form-control" id="validationCustom01"
-                                placeholder="Apellidos y Nombres" name="txtNombre" required>
+                            <input type="text" class="form-control" id="validationCustom01" placeholder="Apellidos y Nombres" name="txtNombre" required>
                             <div class="invalid-feedback">
                                 Ingrese sus Apellidos y Nombres.
                             </div>
@@ -23,16 +21,14 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom02">Usuario:</label>
-                            <input type="email" class="form-control" name="txtUsuario" id="validationCustom02"
-                                placeholder="Email" required>
+                            <input type="email" class="form-control" name="txtUsuario" id="validationCustom02" placeholder="Email" required>
                             <div class="invalid-feedback">
                                 Ingrese un Email.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom03">Contraseña:</label>
-                            <input type="password" class="form-control" name="txtPassword" id="validationCustom03"
-                                placeholder="Contraseña" required>
+                            <input type="password" class="form-control" name="txtPassword" id="validationCustom03" placeholder="Contraseña" required>
                             <div class="invalid-feedback">
                                 Ingrese una Contraseña.
                             </div>
@@ -63,35 +59,30 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                    <button class="btn btn-outline-primary" type="submit" name="btnGuardar" title="Guardar Usuario"><i
-                            class="fa fa-save"></i> Guardar</button>
+                        <button class="btn btn-outline-primary" type="submit" name="btnGuardar" title="Guardar Usuario"><i class="fa fa-save"></i> Guardar</button>
                     </div>
                 </form>
-                <script>
-                // Example starter JavaScript for disabling form submissions if there are invalid fields
-                (function() {
-                    'use strict';
-                    window.addEventListener('load', function() {
-                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                        var forms = document.getElementsByClassName('needs-validation');
-                        // Loop over them and prevent submission
-                        var validation = Array.prototype.filter.call(forms, function(form) {
-                            form.addEventListener('submit', function(event) {
-                                if (form.checkValidity() === false) {
-                                    event.preventDefault();
-                                    event.stopPropagation();
-                                }
-                                form.classList.add('was-validated');
-                            }, false);
-                        });
-                    }, false);
-                })();
-                </script>
             </div>
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div> -->
         </div>
     </div>
 </div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
