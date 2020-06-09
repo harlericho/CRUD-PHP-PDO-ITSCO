@@ -27,9 +27,27 @@ if (isset($_POST['btnGuardar']) != null) {
         'rol' => $_POST['seleccionRol'],
         'estado' => $_POST['seleccionEstado'],
     );
-    $sql = "INSERT INTO usuarios (nombre,usuario,password,idrol,estado) value(:nombre,:usuario,:pass,:rol,:estado)";
+    $sql = "INSERT INTO usuarios (nombre,usuario,password,idrol,estado) VALUE(:nombre,:usuario,:pass,:rol,:estado)";
     $query = $pdo->prepare($sql);
     $query->execute($datos);
+
+    $sql2 = "SELECT max(cod) as cod1 FROM usuarios";
+    $query2 = $pdo->prepare($sql2);
+    $query2->execute();
+    $variable = $query2->fetchAll();
+    foreach ($variable as $key => $value) {
+        $cod1 = $value['cod1'];
+    }
+
+    $imagen = ($_FILES['avatar']['tmp_name']);
+    $imagenusu = fopen($imagen, 'rb');
+    $sql3 = "INSERT INTO images_tabla (imagen, idusu) VALUE(:imagenusu,:idusu)";
+    $query3 = $pdo->prepare($sql3);
+    $query3->bindParam(':imagenusu', $imagenusu, PDO::PARAM_LOB);
+    $query3->bindParam(':idusu', $cod1, PDO::PARAM_INT);
+    $query3->execute();
+
+
     $_SESSION['mensaje'] = 'Usuario agregado';
     $_SESSION['color'] = 'success';
     $_SESSION['logo'] = 'save'; //logo

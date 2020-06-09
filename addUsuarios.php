@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" method="POST" action="controlador/crudUsuarios.php" novalidate>
+                <form class="needs-validation" method="POST" action="controlador/crudUsuarios.php" enctype='multipart/form-data' novalidate>
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="validationCustom01">Apellidos y Nombres:</label>
@@ -48,13 +48,20 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom04">Estado</label>
-                            <select class="custom-select" id="validationCustom04" name="seleccionEstado" required>
+                            <select class="custom-select" id="validationCustom05" name="seleccionEstado" required>
                                 <option selected disabled value="">-Seleccione-</option>
                                 <option value="A">Activo</option>
                                 <option value="I">Inactivo</option>
                             </select>
                             <div class="invalid-feedback">
                                 Seleccione un Estado.
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="validationCustom04">Imagen</label>
+                            <input type="file" class="form-control" name="avatar" id="validationCustom06" required>
+                            <div class="invalid-feedback">
+                                Seleccione una imagen.
                             </div>
                         </div>
                     </div>

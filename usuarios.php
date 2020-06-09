@@ -4,8 +4,9 @@ include "templeate/templeate.php";
 ?>
 
 <?php
-$sql = "SELECT u.cod, u.nombre,u.usuario,u.password,u.idrol,r.descripcion,u.estado
-FROM usuarios u INNER JOIN rol r ON u.idrol=r.cod where u.estado='A'";
+$sql = "SELECT u.cod, i.imagen, u.nombre,u.usuario,u.password,u.idrol,r.descripcion,u.estado
+FROM usuarios u INNER JOIN rol r ON u.idrol=r.cod 
+INNER JOIN images_tabla i ON u.cod=i.idusu WHERE u.estado='A'";
 $query = $pdo->prepare($sql);
 $query->execute();
 $result = $query->fetchAll();
@@ -25,6 +26,7 @@ $result = $query->fetchAll();
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Avatar</th>
                             <th scope="col">Nombres</th>
                             <th scope="col">Usuario</th>
                             <th scope="col">Rol</th>
@@ -38,6 +40,7 @@ $result = $query->fetchAll();
                         ?>
                             <tr>
                                 <th scope="row"><?php echo $value['cod']; ?></th>
+                                <td> <img src="data:image/jpeg;base64, <?php echo base64_encode($value['imagen']);?>" width="50" height="50"/></td>
                                 <td><?php echo $value['nombre']; ?></td>
                                 <td><?php echo $value['usuario']; ?></td>
                                 <td><?php echo $value['descripcion']; ?></td>
